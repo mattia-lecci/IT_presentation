@@ -11,5 +11,10 @@
 *.bbl
 *.dpth
 *-eps-converted-to.pdf
-*.pdf
 *.sty
+*.nav
+*.out
+*.snm
+*.toc
+
+#*.pdf
