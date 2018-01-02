@@ -1,0 +1,206 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertsection
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertsubsection
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{amssymb,amsmath,dsfont}
+\usepackage[english]{babel}
+\usefonttheme[onlymath]{serif}
+\usepackage{multicol}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Notation]{Chapter 0. Course Notation} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Javier R. Fonollosa} % Your name
+\institute[ETSETB-TSC] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Universitat Polit\`{e}cnica de Catalunya \\ % Your institution for the title page
+\medskip
+\textit{javier.fonollosa@upc.edu} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\begin{figure}
+    \centering
+    \includegraphics[width = 0.55\textwidth]{ETSETB-positiu-p3005.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\begin{multicols}{2}
+  \tableofcontents
+%\end{multicols}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Notation used in the course} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+%\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Notation for sets, scalars and vectors}
+\begin{itemize}
+\item Lowercase letters, $x,y,...$ are used for constants and values of random variables. \item Sequences or column vectors are $x_i^j=(x_i, x_{i+1}, ...x_j)$. In case $i=1$ then $x^j=(x_1, x_2, ...x_j)$.
+\item Let $\alpha, \beta \in [0,1]$. Then $\bar{\alpha}=(1-\alpha)$ and $\alpha * \beta = \alpha \bar{\beta}+\beta \bar{\alpha}$.
+\item Calligraphic letters $\mathcal{X,Y, ...}$ are used for finite sets and $|\mathcal{X}|$ denotes the cardinality of the set $\mathcal{X}$.
+\item $[i:2^a]=\{i, i+1, ..., 2^{\lceil{a}\rceil}\}$, where $\lceil{a}\rceil$ is the smallest integer $\geq a$.
+\end{itemize}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Notation for probability and random variables (I)}
+\begin{itemize}
+\item The probability of an event $\mathcal A$ is $\mathsf P(\mathcal A)$ and the conditional probability of $\mathcal A$ given $\mathcal B$ is $\mathsf P(\mathcal A|\mathcal B)$.
+\item Uppercase letters, $X,Y,...$ are used for random variables.
+\item Random variables may take values from finite sets $\mathcal{X,Y, ...}$ or from the real line $\mathbb R$.
+\item $X=\emptyset$ means that $X$ is a degenerate random variable (a constant).
+\item The probability of the event $X\in \mathcal A$ is $\mathsf P\{X\in \mathcal A\}$
+\item Sequences or column vectors of random variables are $X_i^j=(X_i, X_{i+1}, ...X_j)$. In case $i=1$ then $X^j=(X_1, X_2, ...X_j)$.
+\end{itemize}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Notation for probability and random variables (II)}
+\begin{itemize}
+\item $X^n \sim p(x^n)$ means that $p(x^n)$ is the probability mass function (pmf) of the discrete random vector $X^n$.
+\item $X^n \sim f(x^n)$ means that $f(x^n)$ is the probability density function (pdf) of the continuous random vector $X^n$.
+\item $(X^n, Y^n)\sim p(x^n,y^n)$ means that $p(x^n,y^n)$ is the joint pmf of $X^n$ and $Y^n$.
+\item Given a random variable $X$, the expected value of a function $g(X)$ is denoted by $\mathsf E_X(g(X))$ or simply $\mathsf E(g(X))$.
+
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Notation for probability and random variables (and III)}
+\begin{itemize}
+\item $X\sim \mathsf{Bern}(p)$ means $X$ is a Bernoulli random variable with parameter $p\in [0,1]$, i.e., $X=1$ with probability $p$ and $X=0$ with probability $1-p$.
+\item $X\sim \mathsf{Unif}(\mathcal A)$ means $X$ is a discrete uniform random variable over the set $\mathcal A$.
+\item $X\sim \mathsf{Unif}[i:j]$ for integers $j>i$ means $X$ is a discrete uniform random variable over $[i:j]$.
+\item $X\sim \mathsf{Unif}[a,b]$ for $b>a$ means $X$ is a continuous uniform random variable over $[a,b]$.
+\item $X\sim \mathsf{N}(\mu, \sigma^2)$ means $X$ is a Gaussian  random variable with mean $\mu$ and variance $\sigma^2$.
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Common functions}
+\begin{itemize}
+\item The function $\log p$ is assumed to be the base 2 logarithm funcion of $p$.
+\item The binary entropy function: $H(p)=-p\log p - \bar p \log \bar p$ for $p\in [0,1]$.
+\item The Gaussian capacity: $\mathcal C(x)=\frac{1}{2}\log(1+x)$, for $x\geq 0$.
+\item $[x]^+=\max\{x,0\}$.
+\end{itemize}
+\end{frame}
+
+\end{document} 
