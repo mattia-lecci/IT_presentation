@@ -190,6 +190,7 @@
 \subsection{Subsection one}
 \begin{frame}
 \frametitle{Notation for sets, scalars and vectors}
+Test cite \cite{telatar99}
 \begin{itemize}
 \item Lowercase letters, $x,y,...$ are used for constants and values of random variables. \item Sequences or column vectors are $x_i^j=(x_i, x_{i+1}, ...x_j)$. In case $i=1$ then $x^j=(x_1, x_2, ...x_j)$.
 \item Let $\alpha, \beta \in [0,1]$. Then $\bar{\alpha}=(1-\alpha)$ and $\alpha * \beta = \alpha \bar{\beta}+\beta \bar{\alpha}$.
@@ -315,6 +316,10 @@ layout in some cases.
 \end{frame}
 %---------------------------------------------------------
 
-
+\begin{frame}{References}
+\nocite{*}
+\bibliographystyle{ieeetr}
+\bibliography{mybib}
+\end{frame}
 
 \end{document} 
