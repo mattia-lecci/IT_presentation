@@ -18,117 +18,163 @@
 \documentclass{beamer}
 
 \mode<presentation> {
-
-% The Beamer class comes with a number of default slide themes
-% which change the colors and layouts of slides. Below this is a list
-% of all the themes, uncomment each in turn to see what they look like.
-
-%\usetheme{default}
-%\usetheme{AnnArbor}
-%\usetheme{Antibes}
-%\usetheme{Bergen}
-%\usetheme{Berkeley}
-%\usetheme{Berlin}
-%\usetheme{Boadilla}
-%\usetheme{CambridgeUS}
-%\usetheme{Copenhagen}
-%\usetheme{Darmstadt}
-%\usetheme{Dresden}
-%\usetheme{Frankfurt}
-%\usetheme{Goettingen}
-%\usetheme{Hannover}
-%\usetheme{Ilmenau}
-%\usetheme{JuanLesPins}
-%\usetheme{Luebeck}
-\usetheme{Madrid}
-%\usetheme{Malmoe}
-%\usetheme{Marburg}
-%\usetheme{Montpellier}
-%\usetheme{PaloAlto}
-%\usetheme{Pittsburgh}
-%\usetheme{Rochester}
-%\usetheme{Singapore}
-%\usetheme{Szeged}
-%\usetheme{Warsaw}
-
-% As well as themes, the Beamer class has a number of color themes
-% for any slide theme. Uncomment each of these in turn to see how it
-% changes the colors of your current slide theme.
-
-%\usecolortheme{albatross}
-%\usecolortheme{beaver}
-%\usecolortheme{beetle}
-%\usecolortheme{crane}
-%\usecolortheme{dolphin}
-%\usecolortheme{dove}
-%\usecolortheme{fly}
-%\usecolortheme{lily}
-%\usecolortheme{orchid}
-%\usecolortheme{rose}
-%\usecolortheme{seagull}
-%\usecolortheme{seahorse}
-%\usecolortheme{whale}
-%\usecolortheme{wolverine}
-
-%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
-%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
-
-%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+	
+	% The Beamer class comes with a number of default slide themes
+	% which change the colors and layouts of slides. Below this is a list
+	% of all the themes, uncomment each in turn to see what they look like.
+	
+	%\usetheme{default}
+	%\usetheme{AnnArbor}
+	%\usetheme{Antibes}
+	%\usetheme{Bergen}
+	%\usetheme{Berkeley}
+	%\usetheme{Berlin}
+	%\usetheme{Boadilla}
+	%\usetheme{CambridgeUS}
+	%\usetheme{Copenhagen}
+	%\usetheme{Darmstadt}
+	%\usetheme{Dresden}
+	%\usetheme{Frankfurt}
+	%\usetheme{Goettingen}
+	%\usetheme{Hannover}
+	%\usetheme{Ilmenau}
+	%\usetheme{JuanLesPins}
+	%\usetheme{Luebeck}
+	\usetheme{Madrid}
+	%\usetheme{Malmoe}
+	%\usetheme{Marburg}
+	%\usetheme{Montpellier}
+	%\usetheme{PaloAlto}
+	%\usetheme{Pittsburgh}
+	%\usetheme{Rochester}
+	%\usetheme{Singapore}
+	%\usetheme{Szeged}
+	%\usetheme{Warsaw}
+	
+	% As well as themes, the Beamer class has a number of color themes
+	% for any slide theme. Uncomment each of these in turn to see how it
+	% changes the colors of your current slide theme.
+	
+	%\usecolortheme{albatross}
+	%\usecolortheme{beaver}
+	%\usecolortheme{beetle}
+	%\usecolortheme{crane}
+	%\usecolortheme{dolphin}
+	%\usecolortheme{dove}
+	%\usecolortheme{fly}
+	%\usecolortheme{lily}
+	%\usecolortheme{orchid}
+	%\usecolortheme{rose}
+	%\usecolortheme{seagull}
+	%\usecolortheme{seahorse}
+	%\usecolortheme{whale}
+	%\usecolortheme{wolverine}
+	
+	%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+	%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+	
+	\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
 
 \makeatletter
 \setbeamertemplate{footline}
 {
-  \leavevmode%
-  \hbox{%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertsection
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertsubsection
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
-    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
-  \end{beamercolorbox}}%
-  \vskip0pt%
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertsection
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertsubsection
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+			\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+			\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+	\end{beamercolorbox}}%
+	\vskip0pt%
 }
 \makeatother
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
-\usepackage{amssymb,amsmath,dsfont}
+\usepackage{amssymb,amsmath,dsfont,physics}
 \usepackage[english]{babel}
 \usefonttheme[onlymath]{serif}
 \usepackage{multicol}
+\usepackage{datetime,xcolor}
+
+% Custom colors
+\definecolor{DEIred}{RGB}{153,14,32}
+\definecolor{darkDEI1}{RGB}{117,11,24}
+\definecolor{darkDEI2}{RGB}{78,7,16}
+\definecolor{darkDEI3}{RGB}{117,11,24}
+
+\setbeamercolor{palette primary}{bg=DEIred,fg=white}
+\setbeamercolor{palette secondary}{bg=darkDEI1,fg=white}
+\setbeamercolor{palette tertiary}{bg=darkDEI2,fg=white}
+\setbeamercolor{palette quaternary}{bg=darkDEI3,fg=white}
+\setbeamercolor{structure}{fg=DEIred} % itemize, enumerate, etc
+\setbeamercolor{section in toc}{fg=black} % TOC sections
+% Override palette coloring with secondary
+\setbeamercolor{subsection in head/foot}{bg=blue,fg=white}
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Notation]{Chapter 0. Course Notation} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Notation]{Capacity of Multi-antenna Gaussian Channels\\
+	(I. E. Telatar, 1999)} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Javier R. Fonollosa} % Your name
-\institute[ETSETB-TSC] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+\author[Lecci]{Mattia Lecci\inst{1}\inst{2}} % Your name
+
+\institute[UniPD/UPC] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
-Universitat Polit\`{e}cnica de Catalunya \\ % Your institution for the title page
-\medskip
-\textit{javier.fonollosa@upc.edu} % Your email address
+	\inst{1}
+	Universit\`a degli Studi di Padova\\
+	Department of Information Engineering\\
+	(DEI-UniPD)
+	\and
+	\inst{2}
+	Universitat Polit\`{e}cnica de Catalunya\\ % Your institution for the title page
+	Escola T\`ecnica Superior d'Engenyeria de Telecomunicaci\'o  de Barcelona\\
+	(UPC-ETSETB)
+	%\medskip
+	%\textit{javier.fonollosa@upc.edu} % Your email address
 }
-\date{\today} % Date, can be changed to a custom date
+\date{January 2018} % Date, can be changed to a custom date
+
+
+%------------------------------------------------------------
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+	\begin{frame}
+	\frametitle{Table of Contents}
+	\tableofcontents[currentsection]
+\end{frame}
+}
+%------------------------------------------------------------
+
 
 \begin{document}
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \begin{figure}
-    \centering
-    \includegraphics[width = 0.55\textwidth]{img/ETSETB-positiu-p3005.png}
+	\hspace{2cm}
+	\includegraphics[height = 1.2cm]{img/dei_logo}
+	\hfill
+	\includegraphics[height = 1.2cm]{img/ETSETB-positiu-p3005}
+	\hspace{1cm}
 \end{figure}
 \end{frame}
 
 \begin{frame}
 \frametitle{Overview} % Table of contents slide, comment this block out to remove it
 %\begin{multicols}{2}
-  \tableofcontents
+	\tableofcontents
 %\end{multicols}
 \end{frame}
 
@@ -141,7 +187,7 @@ Universitat Polit\`{e}cnica de Catalunya \\ % Your institution for the title pag
 %------------------------------------------------
 
 %\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
-
+\subsection{Subsection one}
 \begin{frame}
 \frametitle{Notation for sets, scalars and vectors}
 \begin{itemize}
@@ -154,6 +200,7 @@ Universitat Polit\`{e}cnica de Catalunya \\ % Your institution for the title pag
 
 
 %----------------------------------------------------------------------------------------
+\subsection{Subsection two}
 \begin{frame}
 \frametitle{Notation for probability and random variables (I)}
 \begin{itemize}
@@ -196,11 +243,78 @@ Universitat Polit\`{e}cnica de Catalunya \\ % Your institution for the title pag
 \begin{frame}
 \frametitle{Common functions}
 \begin{itemize}
-\item The function $\log p$ is assumed to be the base 2 logarithm funcion of $p$.
+\item The function $\log p$ is assumed to be the base 2 logarithm function of $p$.
 \item The binary entropy function: $H(p)=-p\log p - \bar p \log \bar p$ for $p\in [0,1]$.
 \item The Gaussian capacity: $\mathcal C(x)=\frac{1}{2}\log(1+x)$, for $x\geq 0$.
 \item $[x]^+=\max\{x,0\}$.
 \end{itemize}
 \end{frame}
+
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+\frametitle{Sample frame title}
+This is a text in second frame. For the sake of showing an example.
+
+\begin{itemize}
+\item<1-> Text visible on slide 1
+\item<2-> Text visible on slide 2
+\item<3> Text visible on slides 3
+\item<4-> Text visible on slide 4
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------
+
+\section{Second section}
+
+%---------------------------------------------------------
+%Highlighting text
+\begin{frame}
+\frametitle{Sample frame title}
+
+In this slide, some important text will be
+\alert{highlighted} beause it's important.
+Please, don't abuse it.
+
+\begin{block}{Remark}
+Sample text
+\end{block}
+
+\begin{alertblock}{Important theorem}
+Sample text in red box
+\end{alertblock}
+
+\begin{examples}
+Sample text in green box. "Examples" is fixed as block title.
+\end{examples}
+\end{frame}
+%---------------------------------------------------------
+
+
+%---------------------------------------------------------
+%Two columns
+\begin{frame}
+\frametitle{Two-column slide}
+
+\begin{columns}
+
+\column{0.5\textwidth}
+This is a text in first column.
+$$E=mc^2$$
+\begin{itemize}
+\item First item
+\item Second item
+\end{itemize}
+
+\column{0.5\textwidth}
+This text will be in the second column
+and on a second thought this is a nice looking
+layout in some cases.
+\end{columns}
+\end{frame}
+%---------------------------------------------------------
+
+
 
 \end{document} 
