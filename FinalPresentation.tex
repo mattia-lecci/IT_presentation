@@ -103,6 +103,15 @@
 \usepackage{multicol}
 \usepackage{datetime,xcolor}
 
+% Definitions
+\newcommand{\C}[1]{\ensuremath{\mathbb{C}^{#1}}}
+\newcommand{\R}[1]{\ensuremath{\mathbb{R}^{#1}}}
+\newcommand{\Exp}[1]{\ensuremath{E\qty[#1]}}
+\newcommand{\Cov}[1]{\ensuremath{\text{Cov}\qty(#1)}}
+\newcommand{\myspace}{\vspace{3mm}}
+\newcommand{\herm}[1]{\ensuremath{#1^\dagger}}
+\newcommand{\cscg}{circularly symmetric Complex Gaussian}
+
 % Custom colors
 \definecolor{DEIred}{RGB}{153,14,32}
 \definecolor{darkDEI1}{RGB}{117,11,24}
@@ -178,144 +187,7 @@
 %\end{multicols}
 \end{frame}
 
-%----------------------------------------------------------------------------------------
-%	PRESENTATION SLIDES
-%----------------------------------------------------------------------------------------
-
-%------------------------------------------------
-\section{Notation used in the course} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
-%------------------------------------------------
-
-%\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
-\subsection{Subsection one}
-\begin{frame}
-\frametitle{Notation for sets, scalars and vectors}
-Test cite \cite{telatar99}
-\begin{itemize}[<+->] % note that items are shown one at a time
-\item Lowercase letters, $x,y,...$ are used for constants and values of random variables. \item Sequences or column vectors are $x_i^j=(x_i, x_{i+1}, ...x_j)$. In case $i=1$ then $x^j=(x_1, x_2, ...x_j)$.
-\item Let $\alpha, \beta \in [0,1]$. Then $\bar{\alpha}=(1-\alpha)$ and $\alpha * \beta = \alpha \bar{\beta}+\beta \bar{\alpha}$.
-\item Calligraphic letters $\mathcal{X,Y, ...}$ are used for finite sets and $|\mathcal{X}|$ denotes the cardinality of the set $\mathcal{X}$.
-\item $[i:2^a]=\{i, i+1, ..., 2^{\lceil{a}\rceil}\}$, where $\lceil{a}\rceil$ is the smallest integer $\geq a$.
-\end{itemize}
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-\subsection{Subsection two}
-\begin{frame}[allowframebreaks]{Notation for probability and random variables}
-\vspace{0pt}
-\begin{itemize}
-\item The probability of an event $\mathcal A$ is $\mathsf P(\mathcal A)$ and the conditional probability of $\mathcal A$ given $\mathcal B$ is $\mathsf P(\mathcal A|\mathcal B)$.
-\item Uppercase letters, $X,Y,...$ are used for random variables.
-\item Random variables may take values from finite sets $\mathcal{X,Y, ...}$ or from the real line $\mathbb R$.
-\item $X=\emptyset$ means that $X$ is a degenerate random variable (a constant).
-\item The probability of the event $X\in \mathcal A$ is $\mathsf P\{X\in \mathcal A\}$
-\item Sequences or column vectors of random variables are $X_i^j=(X_i, X_{i+1}, ...X_j)$. In case $i=1$ then $X^j=(X_1, X_2, ...X_j)$.
-\end{itemize}
-%
-%
-%
-%----------------------------------------------------------------------------------------
-\framebreak
-%----------------------------------------------------------------------------------------
-%
-%
-\begin{itemize}
-\item $X^n \sim p(x^n)$ means that $p(x^n)$ is the probability mass function (pmf) of the discrete random vector $X^n$.
-\item $X^n \sim f(x^n)$ means that $f(x^n)$ is the probability density function (pdf) of the continuous random vector $X^n$.
-\item $(X^n, Y^n)\sim p(x^n,y^n)$ means that $p(x^n,y^n)$ is the joint pmf of $X^n$ and $Y^n$.
-\item Given a random variable $X$, the expected value of a function $g(X)$ is denoted by $\mathsf E_X(g(X))$ or simply $\mathsf E(g(X))$.
-
-\end{itemize}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Notation for probability and random variables (and III)}
-\begin{itemize}
-\item $X\sim \mathsf{Bern}(p)$ means $X$ is a Bernoulli random variable with parameter $p\in [0,1]$, i.e., $X=1$ with probability $p$ and $X=0$ with probability $1-p$.
-\item $X\sim \mathsf{Unif}(\mathcal A)$ means $X$ is a discrete uniform random variable over the set $\mathcal A$.
-\item $X\sim \mathsf{Unif}[i:j]$ for integers $j>i$ means $X$ is a discrete uniform random variable over $[i:j]$.
-\item $X\sim \mathsf{Unif}[a,b]$ for $b>a$ means $X$ is a continuous uniform random variable over $[a,b]$.
-\item $X\sim \mathsf{N}(\mu, \sigma^2)$ means $X$ is a Gaussian  random variable with mean $\mu$ and variance $\sigma^2$.
-\end{itemize}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Common functions}
-\begin{itemize}
-\item The function $\log p$ is assumed to be the base 2 logarithm function of $p$.
-\item The binary entropy function: $H(p)=-p\log p - \bar p \log \bar p$ for $p\in [0,1]$.
-\item The Gaussian capacity: $\mathcal C(x)=\frac{1}{2}\log(1+x)$, for $x\geq 0$.
-\item $[x]^+=\max\{x,0\}$.
-\end{itemize}
-\end{frame}
-
-%---------------------------------------------------------
-%Changing visivility of the text
-\begin{frame}
-\frametitle{Sample frame title}
-This is a text in second frame. For the sake of showing an example.
-
-\begin{itemize}
-\item<1-> Text visible on slide 1
-\item<2-> Text visible on slide 2
-\item<3> Text visible on slides 3
-\item<4-> Text visible on slide 4
-\end{itemize}
-\end{frame}
-
-%---------------------------------------------------------
-
-\section{Second section}
-
-%---------------------------------------------------------
-%Highlighting text
-\begin{frame}
-\frametitle{Sample frame title}
-
-In this slide, some important text will be
-\alert{highlighted} beause it's important.
-Please, don't abuse it.
-
-\begin{block}{Remark}
-Sample text
-\end{block}
-
-\begin{alertblock}{Important theorem}
-Sample text in red box
-\end{alertblock}
-
-\begin{examples}
-Sample text in green box. "Examples" is fixed as block title.
-\end{examples}
-\end{frame}
-%---------------------------------------------------------
-
-
-%---------------------------------------------------------
-%Two columns
-\begin{frame}
-\frametitle{Two-column slide}
-
-\begin{columns}
-
-\column{0.5\textwidth}
-This is a text in first column.
-$$E=mc^2$$
-\begin{itemize}
-\item First item
-\item Second item
-\end{itemize}
-
-\column{0.5\textwidth}
-This text will be in the second column
-and on a second thought this is a nice looking
-layout in some cases.
-\end{columns}
-\end{frame}
-%---------------------------------------------------------
+\input{tex/introduction.tex}
 
 \begin{frame}{References}
 \nocite{*}

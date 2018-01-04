@@ -1,0 +1,120 @@
+\section{Introduction}
+
+\subsection{Abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Abstract}
+In this presentation I will talk about the capacity of a single-user Gaussian channel with multiple receiving and/or transmitting antennas (also known as \alert{MIMO} channel).
+
+\myspace
+I will talk about 3 cases:
+\begin{itemize}
+	\item Deterministic channel
+	\item Random i.i.d. ergodic channel
+	\item \textit{Bonus}: multi-user case
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Notation and Assumptions}
+\begin{frame}[allowframebreaks]{Notation}
+The notation adopted is halfway between the one used during the course and the one from the original paper.
+
+\myspace
+Let's denote with $t$ the number of transmitting and with $r$ the number of receiving antennas.
+
+\myspace
+We will consider the classical linear model, where $\vb{x}\in \C{t}$ is the transmitted vector and $\vb{y}\in \C{r}$ is the received vector, $H\in \C{r\times t}$ is the complex channel matrix and $\vb{n}\in \C{r}$ is the noise
+$$\vb{y} = H\vb{x} + \vb{n}$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+We assume noise at different receivers to be independent and normalized, i.e. $\Exp{\vb{x} \herm{\vb{x}}} = I_r$.\\
+The dag (\dag) notation is used for the conjugate-transpose operation.
+
+\myspace
+We have the power constraint
+$$\Exp{\herm{\vb{x}}\vb{x}} = \Exp{\tr(\vb{x}\herm{\vb{x}})} = \tr(\Exp{\vb{x}\herm{\vb{x}}})\leq P$$
+
+\myspace
+A complex random vector (r.ve.) $\vb{x}\in \C{n}$ is said to be Complex Gaussian if its real extension $\vu{x} \triangleq \qty[\begin{array}{c}
+\Re{\vb{x}}\\
+\Im{\vb{x}}
+\end{array}]
+\in \R{2n}$ is Gaussian.
+
+\myspace
+The r.ve. $\vb{x}$ will have \textit{mean} and \textit{covariance} respectively $\mu= \Exp{\vb{x}}$ and $Q = \Cov{Q} = \Exp{(\vb{x}-\mu)\herm{(\vb{x}-\mu)}}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+Defining for a complex matrix $A$
+$$\hat{A} = \qty[\begin{array}{lr}
+\Re(A) & -\Im(A)\\
+\Im(A) & \Re(A)
+\end{array}]$$
+we say that a Complex Gaussian r.ve. is \textit{circularly symmetric} if $\Cov{\vu{x}} = \Exp{(\vu{x}-\hat{\mu})(\vu{x}-\hat{\mu})^T} = \frac{1}{2} \hat{Q}$
+
+\begin{block}{pdf of circularly symmetric Complex Gaussian}
+	The pdf of a circularly symmetric Complex Gaussian is
+	\begin{align*}
+	\begin{split}
+	\gamma_{\mu,Q} &= \det(\pi\hat{Q})^{-\frac{1}{2}} e^{-(\hat{x}-\hat{\mu})^T\hat{Q}(\hat{x}-\hat{\mu})}\\
+	&= \det(\pi Q)^{-1} e^{-\herm{(x-\mu)}Q(x-\mu)}
+	\end{split}
+	\end{align*}
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Properties and Lemmas}
+\begin{frame}[allowframebreaks]{Properties and Lemmas}
+\begin{block}{Lemma 1}
+	The following properties hold:
+	\begin{subequations}
+	\begin{gather}
+	C=AB \iff \hat{C} = \hat{A}\hat{B}\\
+	C = A+B \iff \hat{C} = \hat{A} + \hat{B}\\
+	C = \herm{A} \iff \hat{C}=\hat{A}^T\\
+	C=A^{-1} \iff \hat{C} = \hat{A}^{-1}\\
+	\det(\hat{A}) = |\det(A)|^2 = \det(A \herm{A})\\
+	z = x+y \iff \hat{z} = \hat{x}+\hat{y}\\
+	y=Ax \iff \hat{y} = \hat{A}\hat{x}\\
+	\Re{\herm{x}y} = \hat{a}^T\hat{y}
+	\end{gather}
+	\end{subequations}
+\end{block}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+\begin{block}{Corollary 1}
+A matrix $U\in \C{n\times n}$ is unitary if and only if $\hat{U}\in \R{2n\times 2n}$ is orthonormal.
+\end{block}
+\begin{block}{Corollary 2}
+If $Q\in \C{n\times n}$ is positive semi-definite, then so is $\hat{Q}\in \R{2n\times 2n}$.
+\end{block}
+\begin{alertblock}{Lemma 2}
+Suppose the complex r.ve. $\vb{x}\in \C{n}$ is
+zero-mean and satisfies $\Exp{x\herm{x}}=Q$. Then the differential entropy of $\vb{x}$ satisfies $h(\vb{x}) \leq \log\det(\pi e Q)$ if and only if $\vb{x}$ is circularly symmetric Complex Gaussian with
+$$\Exp{x\herm{x}} = Q$$
+\end{alertblock}
+In other words, circularly symmetric Complex Gaussian r.ve. are entropy maximizers for the class of complex random vectors.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+\begin{block}{Lemma 3}
+lf $\vb{x}\in \C{n}$ is a circularly symmetric Complex Gaussian then so is $y = Ax$ for any $A \in \C{m\times n}$.
+\end{block}
+\begin{block}{Lemma 4}\label{lemma:4}
+	f $\vb{x}$ and $\vb{y}$ are independent {\cscg s}, then $\vb{z}=\vb{x}+\vb{y}$ is also \cscg.
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
