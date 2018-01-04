@@ -1,0 +1,34 @@
+\section{Gaussian Channel with Deterministic $H$}
+\subsection{Capacity Derivation}
+
+\begin{frame}[allowframebreaks]{Capacity Derivation}
+We first consider the case of a deterministic (fixed) transfer function $H$. Note that the capacity is a function of both the transfer function and the power constraint, i.e. $C(H,P)$. We consider the case where both receiver and transmitter know the matrix $H$.
+
+\begin{block}{Singular Value Decomposition (SVD)}
+Any matrix $H\in \C{r\times t}$ can be decomposed as
+$$H = UD\herm{V}$$
+where $U\in \C{r\times r}$ and $V \in \C{t\times t}$ are unitary, $D\in \C{r\times t}$ is diagonal with non-negative real entries.
+
+In fact, the columns of $U$ are the eigenvectors of $H\herm{H}$, the columns of $V$ are the eigenvectors of $\herm{H}H$ and the diagonal entries of $D$, called \textit{singular values} of $H$, are the eigenvalues, which coincide for the two cases and given the hermitianity of such matrices, they are real and non-negative.
+\end{block}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+Thus, the problem can be seen as follows
+$$\vb{y} = UD\herm{V}\vb{x} + \vb{n}$$
+
+Therefore, preprocessing the transmitted symbol as $\vb{x} = V\vt{x}$ and $\vt{y}=\herm{U}\vb{y}$ and defining $\vt{n} = \herm{U}\vb{n}$, we get
+$$\vt{y} = D\vt{x} + \vt{n}$$
+as an equivalent channel.
+
+\myspace
+Calling $\sigma_i = \lambda_i^{\frac{1}{2}}$ the singular values for $i=1,\ldots,\min(r,t)$, we have
+\begin{equation*}
+\begin{cases}
+\tilde{y}_i = \sigma_i \tilde{x}_i + \tilde{n}_i & 1\leq i\leq \min(r,t)\\
+\tilde{y}_i = \tilde{n}_i & i > \min(r,t)
+\end{cases}
+\end{equation*}
+
+\end{frame}
