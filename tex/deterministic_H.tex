@@ -1,10 +1,11 @@
 \section{Gaussian Channel with Deterministic $H$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Capacity Derivation}
-
 \begin{frame}[allowframebreaks]{Capacity Derivation}
 We first consider the case of a deterministic (fixed) transfer function $H$. Note that the capacity is a function of both the transfer function and the power constraint, i.e. $C(H,P)$. We consider the case where both receiver and transmitter know the matrix $H$.
 
-\begin{block}{Singular Value Decomposition (SVD)}
+\begin{block}{Singular Value Decomposition (SVD)}\justify
 Any matrix $H\in \C{r\times t}$ can be decomposed as
 $$H = UD\herm{V}$$
 where $U\in \C{r\times r}$ and $V \in \C{t\times t}$ are unitary, $D\in \C{r\times t}$ is diagonal with non-negative real entries.
@@ -26,8 +27,100 @@ as an equivalent channel.
 Calling $\sigma_i = \lambda_i^{\frac{1}{2}}$ the singular values for $i=1,\ldots,\min(r,t)$, we have
 \begin{equation*}
 \begin{cases}
-\tilde{y}_i = \sigma_i \tilde{x}_i + \tilde{n}_i & 1\leq i\leq \min(r,t)\\
-\tilde{y}_i = \tilde{n}_i & i > \min(r,t)
+\tilde{\vb{y}}_i = \sigma_i \tilde{\vb{x}}_i + \tilde{\vb{n}}_i & 1\leq i\leq \min(r,t)\\
+\tilde{\vb{y}}_i = \tilde{\vb{n}}_i & i > \min(r,t)
+\end{cases}
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+It's clear that in order to maximize the capacity we need to choose $\vt{\vb{x}}_i$ for $1\leq i \leq \min(r,t)$ (actually only up to the number of non-zero singular values) to be independent, zero-mean, \cscg.
+
+\medskip
+It can be shown that the optimal variances must follow once again the "water-filling" equations
+\begin{equation*}
+\begin{cases}
+\Exp{\Re(\vt{\vb{x}}_i)} = \Exp{\Im(\vt{\vb{x}}_i)} = \frac{1}{2} \qty(\mu-\lambda_i^{-1})^+\\
+P = \sum_i \qty(\mu-\lambda_i^{-1})^+\\
+C = \sum_i \qty(\log(\mu\lambda_i))^+
+\end{cases}
+\end{equation*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Examples}
+\begin{frame}
+\begin{example}{Example 1}
+	MAYBE??????
+\end{example}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Formal Derivation of Capacity}
+\begin{frame}[allowframebreaks]{Formal Derivation of Capacity}
+
+I will now proceed in the derivation of the capacity in a more formal way. This also will be used with some slight differences in the derivation of the capacity when $\vb{H}$ is not deterministic.
+
+\medskip
+Recall, the mutual information that we are interested in is
+$$I(\vb{x};\vb{y}) = h(\vb{y})-h(\vb{y}|\vb{x}) = h(\vb{y})-h(\vb{n})$$
+
+Note that if $\vb{x}$ satisfies $\Exp{\herm{\vb{x}}\vb{x}} \leq P$, so does $\vb{x}-\Exp{\vb{x}}$, thus we will only focus on zero-mean $\vb{x}$.
+
+\medskip
+Furthermore, if $\vb{x}$ is zero-mean with covariance $\Exp{\vb{x}\herm{\vb{x}}} = Q$, then $\vb{y}$ is zero-mean with covariance $\Exp{\vb{y}\herm{\vb{y}}} = HQ\herm{H} + I_r$, and by Lemma 2 among such $\vb{y}$ the entropy is largest when $\vb{y}$ is \cscg, which is the case when $\vb{x}$ is \cscg{} (Lemmas 3 and 4).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+Considering, then, $\vb{x}$ \cscg, we have
+\begin{align*}
+\begin{split}
+I(\vb{x;y}) &= h(\vb{y})-h(\vb{n}) = \log\det(\pi e(I_r + HQ\herm{H})) - \log\det(\pi e I_r)\\
+&= \log\det(I_r + HQ\herm{H}) = \log\det(I_t + Q\herm{H}H)
+\end{split}
+\end{align*}
+where the last equality is given by \textit{Sylvester's determinant identity}, that states $\det(I+AB) = \det(I+BA)$.
+
+\medskip
+Since it occurs many times during the paper, we define
+$$\Psi(Q,H) = \log\det(I_r + HQ\herm{H})$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+Since we're dealing with zero-mean \cscg, we only need to find a positive semi-definite matrix $Q$ to fully determine the distribution, such that $\tr(Q)\leq P$.
+
+\medskip
+Notice that $\herm{H}H$ is hermitian, thus it can be decomposed as $\herm{H}H = \herm{V}\Lambda V$ with unitary $V$ and diagonal positive semi-definite $\Lambda$. Thus, using Sylvester's identity again we obtain
+\begin{align*}
+\begin{split}
+\log\det(I_t + Q\herm{H}H) &=
+\log\det(I_t + \Lambda^\frac{1}{2}VQ\herm{V}\Lambda^\frac{1}{2})\\
+&= \log\det(I_t + \Lambda^\frac{1}{2}\tilde{Q}\Lambda^\frac{1}{2})
+\end{split}
+\end{align*}
+where we noticed that $Q$ and $\tilde{Q}$ are equivalent for both definiteness and power constraint, so we can as well optimize over $\tilde{Q}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+A special case of \textit{Hadamard's inequality} for positive semi-definite matrices, states that
+$$I(\vb{x;y})
+= \log\det(I_t + \Lambda^\frac{1}{2}\tilde{Q}\Lambda^\frac{1}{2})
+\leq \prod_i (1+ \tilde{Q}_{ii}\lambda_i) $$
+with equality for diagonal matrices.
+
+Thus, we see that the maximizing $\tilde{Q} = VQ\herm{V}$ is diagonal, and the optimal entries follow the water-filling equations, i.e.
+\begin{equation*}
+\begin{cases}
+\tilde{Q}_{ii} = (\mu-\lambda_i^{-1})^+\\
+P = \sum_i \tilde{Q}_{ii}\\
+C = \sum_i (\log(\mu\lambda_i))^+
 \end{cases}
 \end{equation*}
 

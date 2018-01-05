@@ -102,6 +102,9 @@
 \usefonttheme[onlymath]{serif}
 \usepackage{multicol}
 \usepackage{datetime,xcolor}
+\usepackage{ragged2e} % for \justifying
+
+\apptocmd{\frame}{}{\justifying}{}
 
 % Definitions
 \newcommand{\C}[1]{\ensuremath{\mathbb{C}^{#1}}}
