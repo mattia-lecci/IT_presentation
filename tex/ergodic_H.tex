@@ -67,11 +67,11 @@ Note that $\tilde{Q}=\alpha I$ for some $\alpha$ for any $Q$, that $\tr(\tilde{Q
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
 
-\begin{theorem}
+\begin{alertblock}{Theorem}
 	The capacity of the channel is achieved when $\vb{x}$ is a \cscg{} with zero-mean and covariance $Q=\frac{P}{t}I_t$.\\
 	The capacity is given by
 	$$\Exp{\log\det(I_r + \frac{P}{t}\vb{H\herm{H}})}$$.
-\end{theorem}
+\end{alertblock}
 
 Note that for fixed $r$, by the Law of Large Numbers $\frac{1}{t}\vb{H\herm{H}} = I_r$, almost surely as $t$ gets large.\\ Thus, the capacity in the limit of large $t$ equals
 $$r\log(1+P)$$
@@ -114,7 +114,7 @@ After many complex calculations and transformations we reach...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
 
-\begin{theorem}
+\begin{alertblock}{Theorem}
 	The capacity of the Gaussian Channel with ergodic matrix $\vb{H}$, with $t$ transmitters and $r$ receivers under power constraint $P$ equals
 	\begin{equation}\label{eq:capacity_ergodic}
 	\int_0^\infty \log(1+\frac{P}{t}\lambda)
@@ -129,7 +129,7 @@ After many complex calculations and transformations we reach...
 	\dv[k]{}{x}
 	\qty(e^{-x}x^{M-m+k})$$
 	are the \textit{associated Laguerre polynomials}.
-\end{theorem}
+\end{alertblock}
 
 \end{frame}
 

@@ -1,0 +1,30 @@
+\section{\protect\textit{Bonus}: Multiaccess Channel}
+\begin{frame}[allowframebreaks]{\textit{Bonus}: Multiaccess Channel}
+Consider now a number of transmitters, say $K$, each with $t$ transmitting antennas, and each subject to a power constraint $P$. There is a single receiver with $r$ antennas.
+
+\medskip
+The received signal $\vb{y}$ is given by
+$$\vb{y} = \qty[\vb{H}_1 \ldots \vb{H}_K]
+\begin{bmatrix}
+\vb{x}_1 \\ 
+\vdots \\ 
+\vb{x}_K
+\end{bmatrix} 
++\vb{n}$$
+where $\vb{x}_k$ is the signal sent by the $k$-th transmitter, $\vb{n}$ is independent Gaussian noise, and $\vb{H}_k\in \C{r\times t}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+We assume, as for the ergodic case, that the receiver knows all the matrices $\vb{H}_k$, and their entries are i.i.d. \cscg{} with zero-mean and unit variance.
+
+\medskip
+Since we know that the optimal single user transmission yields an i.i.d. solution for each antenna, it doesn't matter if the transmitters in the multiuser scenario cannot cooperate.
+
+\medskip
+Thus, a rate vector $(R_1,\ldots,R_K)$ will be achievable if
+$$\sum_{i=1}^{k} R_{[i]} \leq C(r,kt,kP) \qquad \text{for all } k=1,\ldots,K$$
+where $\qty(R_{[1]},\ldots,R_{[K]})$ is the ordering of the rate vector from the largest to the smallest, and $C(a, b, P)$ is the single user
+$a$ receiver $b$ transmitter capacity under power constraint $P$.
+
+\end{frame}
