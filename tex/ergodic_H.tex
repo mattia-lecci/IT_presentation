@@ -116,11 +116,13 @@ After many complex calculations and transformations we reach...
 
 \begin{theorem}
 	The capacity of the Gaussian Channel with ergodic matrix $\vb{H}$, with $t$ transmitters and $r$ receivers under power constraint $P$ equals
-	$$\int_0^\infty \log(1+\frac{P}{t}\lambda)
+	\begin{equation}\label{eq:capacity_ergodic}
+	\int_0^\infty \log(1+\frac{P}{t}\lambda)
 	\sum_{k=0}^{m-1} \frac{k!}{(k+M-m)!}
-	[L_k^{M-m}(\lambda)]^2
+	L_k^{M-m}(\lambda)^2
 	\lambda^{M-m} e^{-\lambda}
-	\dd{\lambda}$$
+	\dd{\lambda}
+	\end{equation}
 	where $m=\min(r,t)$, $M=\max(r,t)$, and
 	$$L_k^{M-m}(x) = \frac{1}{k!}
 	e^x x^{m-M}
@@ -128,5 +130,75 @@ After many complex calculations and transformations we reach...
 	\qty(e^{-x}x^{M-m+k})$$
 	are the \textit{associated Laguerre polynomials}.
 \end{theorem}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Examples}
+\begin{frame}[allowframebreaks]{Examples}
+
+\begin{example}[$t=1$]
+	In this case $m=1$ and $M=r$. Note that $L_0^{r-1}(\lambda)=1$, thus from Eq.~\eqref{eq:capacity_ergodic} we get
+	$$C = \frac{1}{(r-1)!}
+	\int_0^\infty \log(1+P\lambda)
+	\lambda^{r-1} e^{-\lambda}
+	\dd{\lambda}$$
+	As $r$ gets large, so does the capacity.
+	
+	It can be shown that as $r\rightarrow\infty$, $C \sim \log(1+rP)$, meaning that $C-\log(1+rP) \xrightarrow{r\rightarrow\infty} 0$.
+\end{example}
+
+\begin{example}[$t=1$]
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{img/capacity_t1}
+	\caption{The value of the capacity (in \textit{nats}) for $0$dB$\leq P\leq 35$dB in $5$dB increments}
+	\label{fig:capacity_t1}
+\end{figure}
+\end{example}
+
+\begin{example}[$r=1$]
+	In this case $m=1$ and $M=t$. Differently from before, though, the capacity is
+	$$C = \frac{1}{(t-1)!}
+	\int_0^\infty \log(1+\frac{P}{t}\lambda)
+	\lambda^{t-1} e^{-\lambda}
+	\dd{\lambda}$$
+	Quite differently from before, the asymptotic capacity is $C \xrightarrow{t\rightarrow\infty} \log(1+P)$.
+	
+	Thus, just increasing the number of transmitting antennas will not help getting more capacity.
+\end{example}
+
+\begin{example}[$r=1$]
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\linewidth]{img/capacity_r1}
+		\caption{The value of the capacity (in \textit{nats}) for $0$dB$\leq P\leq 35$dB in $5$dB increments}
+		\label{fig:capacity_r1}
+	\end{figure}
+\end{example}
+
+\begin{example}[$r=t$]
+	In this case $m=M=r=t$. From Eq.~\eqref{eq:capacity_ergodic}, then, we get
+	$$C =
+	\int_0^\infty \log(1+\frac{P}{m}\lambda)
+	\sum_{k=0}^{m-1} L_k(\lambda)^2 e^{-\lambda}
+	\dd{\lambda}$$
+	There actually exists a close form formula for this integral, which is
+	\begin{equation}
+	\lim_{m\rightarrow\infty} \frac{C}{m} =
+	\log P -1+ \frac{\sqrt{1+4P}-1}{2P} + 2\tanh[-1](\frac{1}{\sqrt{1+4P}})
+	\end{equation}
+	which clearly means that the capacity is a linear function of the number of transmitting/receiving antennas.
+\end{example}
+
+\begin{example}[$r=t$]
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{img/capacity_rt}
+		\caption{The value of the capacity (in \textit{nats}) for $0$dB$\leq P\leq 35$dB in $5$dB increments}
+		\label{fig:capacity_rt}
+	\end{figure}
+\end{example}
 
 \end{frame}
