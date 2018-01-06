@@ -109,7 +109,7 @@
 % Definitions
 \newcommand{\C}[1]{\ensuremath{\mathbb{C}^{#1}}}
 \newcommand{\R}[1]{\ensuremath{\mathbb{R}^{#1}}}
-\newcommand{\Exp}[1]{\ensuremath{E\qty[#1]}}
+\newcommand{\Exp}[2][]{\ensuremath{E_{#1}\qty[#2]}}
 \newcommand{\Cov}[1]{\ensuremath{\text{Cov}\qty(#1)}}
 \newcommand{\myspace}{\vspace{3mm}}
 \newcommand{\herm}[1]{\ensuremath{#1^\dagger}}
@@ -193,6 +193,7 @@
 
 \input{tex/introduction.tex}
 \input{tex/deterministic_H.tex}
+\input{tex/ergodic_H.tex}
 
 \begin{frame}{References}
 \nocite{*}

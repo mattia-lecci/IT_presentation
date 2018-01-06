@@ -1,0 +1,132 @@
+\section{Gaussian Channel with Ergodic $\vb{H}$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Introduction to the problem}
+\begin{frame}{Introduction}
+
+We now consider the case when the matrix $\vb{H}$ is i.i.d. random and ergodic. Ergodicity comes into play to ensure that the capacity is the actual bound as as matrix is randomly changing over time.
+
+\medskip
+We assume that $\vb{H}$ is independent of both $\vb{x}$ and $\vb{n}$, and that the specific realization $H$ is know at the receiver (while the transmitter only knows it's distribution). Thus, we can equivalently say that the channel yields the couple $(\vb{y,H})$.
+
+\medskip
+We will further assume that the entry of $\vb{H}$ are i.i.d. zero-mean Complex Gaussians, with independent real and imaginary parts, each with variance $\frac{1}{2}$.
+
+\medskip
+In other words we are considering a Rayleigh fading channel for each component and enough physical separation within transmitting and receiving antennas to achieve independence between the entries of $\vb{H}$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Capacity-achieving Distribution}
+\begin{frame}[allowframebreaks]{Capacity-achieving Distribution}
+This time, we can compute the mutual information as follows
+\begin{align*}
+\begin{split}
+I(\vb{x;(y,H)}) &= I(\vb{x;H}) + I(\vb{x;y|H})\\
+&= I(\vb{x;y|H})\\
+&= \Exp[\vb{H}]{I(\vb{x;y|H}=H)}
+\end{split}
+\end{align*}
+
+We know that for a deterministic $H$, the maximizer $\vb{x}$ takes the form of a zero-mean \cscg{} with covariance $Q$, and $\Psi(Q,H) = \log\det(I_r + HQ\herm{H})$ is the corresponding maximal mutual information.
+
+\medskip
+We thus need to maximize
+$$\Psi(Q) = \Exp{\Psi(Q,\vb{H})} = \Exp{\log\det(I_r + \vb{H}Q\herm{\vb{H}})}$$
+over the choice of positive semi-definite $Q$, such that $\tr(Q)\leq P$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+Since Q is positive semi-definite, we can write it as $Q = W\Delta\herm{W}$, where $W$ is unitary and $\Delta$ is non-negative diagonal. Thus
+$$\Psi(Q) = \Exp{\log\det(I_r + (\vb{H}W)\Delta\herm{(\vb{H}W)})}$$
+It can be shown that $\vb{H}W$ has the same distribution as $\vb{H}$ (since $W$ is unitary and $\vb{H}$ has i.i.d. entries), and thus $\Psi(Q)=\Psi(\Delta)$. It follows that we can focus on non-negative diagonal $Q$.
+
+\medskip
+Consider the permutation matrix $\Pi$ (which is orthogonal, thus unitary) and define $Q^\Pi \triangleq \Pi Q \Pi^T$. Again, we note that $\Psi(Q^\Pi) = \Psi(Q)$. Also, note that if $Q$ is diagonal, also $Q^\Pi$ is diagonal and they share the same determinant (the main diagonal is only shuffled).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+Note that the transformation $Q\rightarrow I_r+HQ\herm{H}$ is linear and preserves positive definiteness, and know that the $\log\det$ function is concave over the closed cone of positive semi-definite matrices.\\
+Thus $Q\rightarrow \Psi(Q)$ is concave.
+
+\medskip
+Let's define
+$$\tilde{Q} = \frac{1}{t!}\sum_\Pi Q^\Pi$$
+Note that $\tilde{Q}=\alpha I$ for some $\alpha$ for any $Q$, that $\tr(\tilde{Q})=\tr(Q)$ and $\Psi(\tilde{Q})\geq\Psi(Q)$.
+%\begin{align*}
+%\begin{split}
+%\Psi(\tilde{Q}) &= \Psi\qty(\sum_\Pi \frac{1}{t!} Q^\Pi)
+%\geq \sum_\Pi \frac{1}{t!} \Psi(Q^\Pi)
+%\end{split}
+%\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+\begin{theorem}
+	The capacity of the channel is achieved when $\vb{x}$ is a \cscg{} with zero-mean and covariance $Q=\frac{P}{t}I_t$.\\
+	The capacity is given by
+	$$\Exp{\log\det(I_r + \frac{P}{t}\vb{H\herm{H}})}$$.
+\end{theorem}
+
+Note that for fixed $r$, by the Law of Large Numbers $\frac{1}{t}\vb{H\herm{H}} = I_r$, almost surely as $t$ gets large.\\ Thus, the capacity in the limit of large $t$ equals
+$$r\log(1+P)$$
+which scales linearly with the number of receivers!
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Evaluation of the Capacity}
+\begin{frame}[allowframebreaks]{Evaluation of the Capacity}
+
+First of all, from the Sylvester's determinant identity we know that
+$$\det(I_r + \frac{P}{t}\vb{H\herm{H}}) = \det(I_t + \frac{P}{t}\vb{\herm{H}H})$$
+We can then define
+\begin{equation*}
+\vb{W}=\begin{cases}
+\vb{H\herm{H}}	& r<t\\
+\vb{\herm{H}H}	& r\geq t
+\end{cases}
+\end{equation*}
+and also $m=\min(r,t)$, $M=\max(r,t)$.
+
+\medskip
+Clearly, $\vb{W}\in \C{m\times m}$ is a random positive semi-definite matrix, thus it has random, real, non-negative eigenvalues $\vb*{\lambda}_1,\ldots,\vb*{\lambda}_m$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+From the literature, we know that the entries of $\vb{W}$ follow a \textit{Wishart distribution with parameters $m$, $M$} and the joint density of the \textit{ordered} eigenvalues is known to be \cite{james1964}
+$$p_{\lambda,\text{ord}} = 	\frac{1}{K_{m,M}}
+\prod_i e^{-\lambda_i}\lambda_i^{M-m}
+\prod_{j>i} (\lambda_i-\lambda_j)^2,
+\quad \lambda_1\geq \ldots \geq \lambda_m \geq 0 $$
+where $K_{m,M}$ is a normalizing factor.
+
+\medskip
+After many complex calculations and transformations we reach...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\framebreak
+
+\begin{theorem}
+	The capacity of the Gaussian Channel with ergodic matrix $\vb{H}$, with $t$ transmitters and $r$ receivers under power constraint $P$ equals
+	$$\int_0^\infty \log(1+\frac{P}{t}\lambda)
+	\sum_{k=0}^{m-1} \frac{k!}{(k+M-m)!}
+	[L_k^{M-m}(\lambda)]^2
+	\lambda^{M-m} e^{-\lambda}
+	\dd{\lambda}$$
+	where $m=\min(r,t)$, $M=\max(r,t)$, and
+	$$L_k^{M-m}(x) = \frac{1}{k!}
+	e^x x^{m-M}
+	\dv[k]{}{x}
+	\qty(e^{-x}x^{M-m+k})$$
+	are the \textit{associated Laguerre polynomials}.
+\end{theorem}
+
+\end{frame}
