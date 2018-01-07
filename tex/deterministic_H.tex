@@ -3,14 +3,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Capacity Derivation}
 \begin{frame}[allowframebreaks]{Capacity Derivation}
-We first consider the case of a deterministic (fixed) transfer function $H$. Note that the capacity is a function of both the transfer function and the power constraint, i.e. $C(H,P)$. We consider the case where both receiver and transmitter know the matrix $H$.
+We first consider the case of a deterministic (fixed) transfer function $H$. We consider the case where \alert{both receiver and transmitter know $H$}.
 
 \begin{block}{Singular Value Decomposition (SVD)}\justify
 Any matrix $H\in \C{r\times t}$ can be decomposed as
 $$H = UD\herm{V}$$
 where $U\in \C{r\times r}$ and $V \in \C{t\times t}$ are unitary, $D\in \C{r\times t}$ is diagonal with non-negative real entries.
 
-In fact, the columns of $U$ are the eigenvectors of $H\herm{H}$, the columns of $V$ are the eigenvectors of $\herm{H}H$ and the diagonal entries of $D$, called \textit{singular values} of $H$, are the eigenvalues, which coincide for the two cases and given the hermitianity of such matrices, they are real and non-negative.
+In fact, the columns of $U$ are the eigenvectors of $H\herm{H}$, the columns of $V$ are the eigenvectors of $\herm{H}H$ and the diagonal entries of $D$, called \textit{singular values} of $H$, are the eigenvalues (which coincide for the two cases) and given the hermitianity of such matrices, they are real and non-negative.\\
+\textit{Note: typically the eigenvalues are ordered from the largest to the smallest.}
 \end{block}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,12 +39,12 @@ Calling $\sigma_i = \lambda_i^{\frac{1}{2}}$ the singular values for $i=1,\ldots
 It's clear that in order to maximize the capacity we need to choose $\vt{\vb{x}}_i$ for $1\leq i \leq \min(r,t)$ (actually only up to the number of non-zero singular values) to be independent, zero-mean, \cscg.
 
 \medskip
-It can be shown that the optimal variances must follow once again the "water-filling" equations
+It can be shown that the optimal variances must follow once again the \enquote{water-filling} equations
 \begin{equation*}
 \begin{cases}
-\Exp{\Re(\vt{\vb{x}}_i)} = \Exp{\Im(\vt{\vb{x}}_i)} = \frac{1}{2} \qty(\mu-\lambda_i^{-1})^+\\
-P = \sum_i \qty(\mu-\lambda_i^{-1})^+\\
-C = \sum_i \qty(\log(\mu\lambda_i))^+
+\displaystyle \Exp{\Re(\vt{\vb{x}}_i)} = \Exp{\Im(\vt{\vb{x}}_i)} = \frac{1}{2} \qty(\mu-\lambda_i^{-1})^+\\
+\displaystyle P = \sum_i \qty(\mu-\lambda_i^{-1})^+\\
+\displaystyle C = \sum_i \qty(\log(\mu\lambda_i))^+
 \end{cases}
 \end{equation*}
 
@@ -109,9 +110,9 @@ with equality for diagonal matrices.
 Thus, we see that the maximizing $\tilde{Q} = VQ\herm{V}$ is diagonal, and the optimal entries follow the water-filling equations, i.e.
 \begin{equation*}
 \begin{cases}
-\tilde{Q}_{ii} = (\mu-\lambda_i^{-1})^+\\
-P = \sum_i \tilde{Q}_{ii}\\
-C = \sum_i (\log(\mu\lambda_i))^+
+\displaystyle \tilde{Q}_{ii} = (\mu-\lambda_i^{-1})^+\\
+\displaystyle P = \sum_i \tilde{Q}_{ii}\\
+\displaystyle C = \sum_i (\log(\mu\lambda_i))^+
 \end{cases}
 \end{equation*}
 

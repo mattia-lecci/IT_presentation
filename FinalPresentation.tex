@@ -99,12 +99,17 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{amssymb,amsmath,dsfont,physics}
 \usepackage[english]{babel}
+\usepackage{csquotes}
 \usefonttheme[onlymath]{serif}
 \usepackage{multicol}
 \usepackage{datetime,xcolor}
 \usepackage{ragged2e} % for \justifying
 
 \apptocmd{\frame}{}{\justifying}{}
+
+% try to avoid inline equation to be broken in different lines
+\relpenalty=10000
+\binoppenalty=10000
 
 % Definitions
 \newcommand{\C}[1]{\ensuremath{\mathbb{C}^{#1}}}
@@ -114,6 +119,7 @@
 \newcommand{\myspace}{\vspace{3mm}}
 \newcommand{\herm}[1]{\ensuremath{#1^\dagger}}
 \newcommand{\vt}[1]{\ensuremath{\tilde{\vb{#1}}}}
+\newcommand{\vh}[1]{\ensuremath{\hat{\vb{#1}}}}
 \newcommand{\cscg}{circularly symmetric Complex Gaussian}
 
 % Custom colors

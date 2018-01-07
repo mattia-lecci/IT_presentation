@@ -30,7 +30,7 @@ $$\vb{y} = H\vb{x} + \vb{n}$$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
 
-We assume noise at different receivers to be independent and normalized, i.e. $\Exp{\vb{x} \herm{\vb{x}}} = I_r$.\\
+We assume noise at different receivers to be independent and normalized, i.e. $\Exp{\vb{n} \herm{\vb{n}}} = I_r$.\\
 The dag (\dag) notation is used for the conjugate-transpose operation.
 
 \myspace
@@ -38,7 +38,7 @@ We have the power constraint
 $$\Exp{\herm{\vb{x}}\vb{x}} = \Exp{\tr(\vb{x}\herm{\vb{x}})} = \tr(\Exp{\vb{x}\herm{\vb{x}}})\leq P$$
 
 \myspace
-A complex random vector (r.ve.) $\vb{x}\in \C{n}$ is said to be Complex Gaussian if its real extension $\vu{x} \triangleq \qty[\begin{array}{c}
+A complex random vector (r.ve.) $\vb{x}\in \C{n}$ is said to be Complex Gaussian if its real extension $\vh{x} \triangleq \qty[\begin{array}{c}
 \Re{\vb{x}}\\
 \Im{\vb{x}}
 \end{array}]
@@ -55,10 +55,11 @@ $$\hat{A} = \qty[\begin{array}{lr}
 \Re(A) & -\Im(A)\\
 \Im(A) & \Re(A)
 \end{array}]$$
-we say that a Complex Gaussian r.ve. is \textit{circularly symmetric} if $\Cov{\vu{x}} = \Exp{(\vu{x}-\hat{\mu})(\vu{x}-\hat{\mu})^T} = \frac{1}{2} \hat{Q}$
+we say that a Complex Gaussian r.ve. is \textit{circularly symmetric} if
+$$\Cov{\vh{x}} = \Exp{(\vh{x}-\hat{\mu})(\vh{x}-\hat{\mu})^T} = \frac{1}{2} \hat{Q}$$
 
-\begin{block}{pdf of circularly symmetric Complex Gaussian}
-	The pdf of a circularly symmetric Complex Gaussian is
+\begin{block}{pdf of \cscg}
+	The pdf of a \cscg is
 	\begin{align*}
 	\begin{split}
 	\gamma_{\mu,Q} &= \det(\pi\hat{Q})^{-\frac{1}{2}} e^{-(\hat{x}-\hat{\mu})^T\hat{Q}(\hat{x}-\hat{\mu})}\\
@@ -83,7 +84,7 @@ we say that a Complex Gaussian r.ve. is \textit{circularly symmetric} if $\Cov{\
 	\det(\hat{A}) = |\det(A)|^2 = \det(A \herm{A})\\
 	z = x+y \iff \hat{z} = \hat{x}+\hat{y}\\
 	y=Ax \iff \hat{y} = \hat{A}\hat{x}\\
-	\Re{\herm{x}y} = \hat{a}^T\hat{y}
+	\Re{\herm{x}y} = \hat{x}^T\hat{y}
 	\end{gather}
 	\end{subequations}
 \end{block}
@@ -99,16 +100,16 @@ If $Q\in \C{n\times n}$ is positive semi-definite, then so is $\hat{Q}\in \R{2n\
 \end{block}
 \begin{alertblock}{Lemma 2}\justify
 Suppose the complex r.ve. $\vb{x}\in \C{n}$ is
-zero-mean and satisfies $\Exp{x\herm{x}}=Q$. Then the differential entropy of $\vb{x}$ satisfies $h(\vb{x}) \leq \log\det(\pi e Q)$ if and only if $\vb{x}$ is circularly symmetric Complex Gaussian with
-$$\Exp{x\herm{x}} = Q$$
+zero-mean and $\Cov{\vb{x}}=Q$.\\
+Then the differential entropy of $\vb{x}$ satisfies $h(\vb{x}) \leq \log\det(\pi e Q)$ with equality if and only if $\vb{x}$ is \cscg.
 \end{alertblock}
-In other words, circularly symmetric Complex Gaussian r.ve. are entropy maximizers for the class of complex random vectors.
+In other words, \cscg r.ve. are entropy maximizers for the class of complex random vectors.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
 
 \begin{block}{Lemma 3}
-lf $\vb{x}\in \C{n}$ is a circularly symmetric Complex Gaussian then so is $y = Ax$ for any $A \in \C{m\times n}$.
+lf $\vb{x}\in \C{n}$ is a \cscg then so is $\vb{y} = A\vb{x}$ for any $A \in \C{m\times n}$.
 \end{block}
 \begin{block}{Lemma 4}\label{lemma:4}
 	f $\vb{x}$ and $\vb{y}$ are independent {\cscg s}, then $\vb{z}=\vb{x}+\vb{y}$ is also \cscg.

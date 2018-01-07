@@ -4,13 +4,13 @@
 \subsection{Introduction to the problem}
 \begin{frame}{Introduction}
 
-We now consider the case when the matrix $\vb{H}$ is i.i.d. random and ergodic. Ergodicity comes into play to ensure that the capacity is the actual bound as as matrix is randomly changing over time.
+We now consider the case when the matrix $\vb{H}$ is i.i.d. random and ergodic. Ergodicity comes into play to ensure that the capacity is the actual bound as matrix is randomly changing over time.
 
 \medskip
-We assume that $\vb{H}$ is independent of both $\vb{x}$ and $\vb{n}$, and that the specific realization $H$ is know at the receiver (while the transmitter only knows it's distribution). Thus, we can equivalently say that the channel yields the couple $(\vb{y,H})$.
+We assume that $\vb{H}$ is independent of both $\vb{x}$ and $\vb{n}$, and that the specific realization $H$ is know at the receiver (while the transmitter only knows its distribution). Thus, we can equivalently say that the channel yields the couple $(\vb{y,H})$.
 
 \medskip
-We will further assume that the entry of $\vb{H}$ are i.i.d. zero-mean Complex Gaussians, with independent real and imaginary parts, each with variance $\frac{1}{2}$.
+We will further assume that the entry of $\vb{H}$ are i.i.d. zero-mean Complex Gaussian, with independent real and imaginary parts, each with variance $\frac{1}{2}$.
 
 \medskip
 In other words we are considering a Rayleigh fading channel for each component and enough physical separation within transmitting and receiving antennas to achieve independence between the entries of $\vb{H}$.
@@ -40,9 +40,9 @@ over the choice of positive semi-definite $Q$, such that $\tr(Q)\leq P$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
 
-Since Q is positive semi-definite, we can write it as $Q = W\Delta\herm{W}$, where $W$ is unitary and $\Delta$ is non-negative diagonal. Thus
+Since $Q$ is positive semi-definite, we can write it as $Q = W\Delta\herm{W}$, where $W$ is unitary and $\Delta$ is non-negative diagonal. Thus
 $$\Psi(Q) = \Exp{\log\det(I_r + (\vb{H}W)\Delta\herm{(\vb{H}W)})}$$
-It can be shown that $\vb{H}W$ has the same distribution as $\vb{H}$ (since $W$ is unitary and $\vb{H}$ has i.i.d. entries), and thus $\Psi(Q)=\Psi(\Delta)$. It follows that we can focus on non-negative diagonal $Q$.
+It can be shown that $\vb{H}W$ has the same distribution as $\vb{H}$ (since $W$ is unitary and $\vb{H}$ has i.i.d. entries), and thus $\Psi(Q)=\Psi(\Delta)$. It follows that we can focus on positive semi-definite diagonal $Q$.
 
 \medskip
 Consider the permutation matrix $\Pi$ (which is orthogonal, thus unitary) and define $Q^\Pi \triangleq \Pi Q \Pi^T$. Again, we note that $\Psi(Q^\Pi) = \Psi(Q)$. Also, note that if $Q$ is diagonal, also $Q^\Pi$ is diagonal and they share the same determinant (the main diagonal is only shuffled).
@@ -56,13 +56,7 @@ Thus $Q\rightarrow \Psi(Q)$ is concave.
 \medskip
 Let's define
 $$\tilde{Q} = \frac{1}{t!}\sum_\Pi Q^\Pi$$
-Note that $\tilde{Q}=\alpha I$ for some $\alpha$ for any $Q$, that $\tr(\tilde{Q})=\tr(Q)$ and $\Psi(\tilde{Q})\geq\Psi(Q)$.
-%\begin{align*}
-%\begin{split}
-%\Psi(\tilde{Q}) &= \Psi\qty(\sum_\Pi \frac{1}{t!} Q^\Pi)
-%\geq \sum_\Pi \frac{1}{t!} \Psi(Q^\Pi)
-%\end{split}
-%\end{align*}
+Note that $\tilde{Q}=\alpha I_t$ for some $\alpha$ for any $Q$, that $\tr(\tilde{Q})=\tr(Q)$ and $\Psi(\tilde{Q})\geq\Psi(Q)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
@@ -70,10 +64,11 @@ Note that $\tilde{Q}=\alpha I$ for some $\alpha$ for any $Q$, that $\tr(\tilde{Q
 \begin{alertblock}{Theorem}
 	The capacity of the channel is achieved when $\vb{x}$ is a \cscg{} with zero-mean and covariance $Q=\frac{P}{t}I_t$.\\
 	The capacity is given by
-	$$\Exp{\log\det(I_r + \frac{P}{t}\vb{H\herm{H}})}$$.
+	$$C(r,t,P) = \Exp{\log\det(I_r + \frac{P}{t}\vb{H\herm{H}})}$$.
 \end{alertblock}
 
-Note that for fixed $r$, by the Law of Large Numbers $\frac{1}{t}\vb{H\herm{H}} = I_r$, almost surely as $t$ gets large.\\ Thus, the capacity in the limit of large $t$ equals
+Note that $Q=\frac{P}{t}I_t$ means that the transmitted symbol $\vb{x}$ is i.i.d.\\
+Note also that for fixed $r$, by the Law of Large Numbers $\frac{1}{t}\vb{H\herm{H}} = I_r$, almost surely as $t$ gets large.\\ Thus, the capacity in the limit of large $t$ equals
 $$r\log(1+P)$$
 which scales linearly with the number of receivers!
 
@@ -116,13 +111,15 @@ After many complex calculations and transformations we reach...
 
 \begin{alertblock}{Theorem}
 	The capacity of the Gaussian Channel with ergodic matrix $\vb{H}$, with $t$ transmitters and $r$ receivers under power constraint $P$ equals
-	\begin{equation}\label{eq:capacity_ergodic}
-	\int_0^\infty \log(1+\frac{P}{t}\lambda)
-	\sum_{k=0}^{m-1} \frac{k!}{(k+M-m)!}
-	L_k^{M-m}(\lambda)^2
+	\begin{align}\label{eq:capacity_ergodic}
+	\begin{split}
+	C(r,t,P) = \int_0^\infty \log(1+\frac{P}{t}\lambda)
+	\sum_{k=0}^{m-1} \frac{k!}{(k+M-m)!}\\
+	\Big[L_k^{M-m}(\lambda)\Big]^2
 	\lambda^{M-m} e^{-\lambda}
 	\dd{\lambda}
-	\end{equation}
+	\end{split}
+	\end{align}
 	where $m=\min(r,t)$, $M=\max(r,t)$, and
 	$$L_k^{M-m}(x) = \frac{1}{k!}
 	e^x x^{m-M}
@@ -140,13 +137,14 @@ After many complex calculations and transformations we reach...
 
 \begin{example}[$t=1$]
 	In this case $m=1$ and $M=r$. Note that $L_0^{r-1}(\lambda)=1$, thus from Eq.~\eqref{eq:capacity_ergodic} we get
-	$$C = \frac{1}{(r-1)!}
+	$$C(r,1,P) = \frac{1}{(r-1)!}
 	\int_0^\infty \log(1+P\lambda)
 	\lambda^{r-1} e^{-\lambda}
 	\dd{\lambda}$$
 	As $r$ gets large, so does the capacity.
 	
-	It can be shown that as $r\rightarrow\infty$, $C \sim \log(1+rP)$, meaning that $C-\log(1+rP) \xrightarrow{r\rightarrow\infty} 0$.
+	It can be shown that
+	$$C \xrightarrow{r\rightarrow\infty} \log(1+rP)$$
 \end{example}
 
 \begin{example}[$t=1$]
@@ -160,14 +158,14 @@ After many complex calculations and transformations we reach...
 
 \begin{example}[$r=1$]
 	In this case $m=1$ and $M=t$. Differently from before, though, the capacity is
-	$$C = \frac{1}{(t-1)!}
+	$$C(1,t,P) = \frac{1}{(t-1)!}
 	\int_0^\infty \log(1+\frac{P}{t}\lambda)
 	\lambda^{t-1} e^{-\lambda}
 	\dd{\lambda}$$
-	Quite differently from before, the asymptotic capacity is $C \xrightarrow{t\rightarrow\infty} \log(1+P)$.
-	
-	Thus, just increasing the number of transmitting antennas will not help getting more capacity.
+	Quite differently from before, the asymptotic capacity is 
+	$$C \xrightarrow{t\rightarrow\infty} \log(1+P)$$
 \end{example}
+Thus, just increasing the number of transmitting antennas will not help getting more capacity.
 
 \begin{example}[$r=1$]
 	\begin{figure}
@@ -180,13 +178,13 @@ After many complex calculations and transformations we reach...
 
 \begin{example}[$r=t$]
 	In this case $m=M=r=t$. From Eq.~\eqref{eq:capacity_ergodic}, then, we get
-	$$C =
+	$$C(m,m,P) =
 	\int_0^\infty \log(1+\frac{P}{m}\lambda)
 	\sum_{k=0}^{m-1} L_k(\lambda)^2 e^{-\lambda}
 	\dd{\lambda}$$
 	There actually exists a close form formula for this integral, which is
 	\begin{equation}
-	\lim_{m\rightarrow\infty} \frac{C}{m} =
+	\lim_{m\rightarrow\infty} \frac{C(m,m,P)}{m} =
 	\log P -1+ \frac{\sqrt{1+4P}-1}{2P} + 2\tanh[-1](\frac{1}{\sqrt{1+4P}})
 	\end{equation}
 	which clearly means that the capacity is a linear function of the number of transmitting/receiving antennas.
