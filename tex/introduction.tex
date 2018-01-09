@@ -8,9 +8,9 @@ In this presentation I will talk about the capacity of a single-user Gaussian ch
 \myspace
 I will talk about 3 cases:
 \begin{itemize}
-	\item Deterministic channel
-	\item Random i.i.d. ergodic channel
-	\item \textit{Bonus}: multi-user case
+	\item Deterministic Cannel
+	\item Random i.i.d. Ergodic Channel
+	\item \textit{Bonus}: Multi-User Case
 \end{itemize}
 
 \end{frame}
@@ -59,7 +59,7 @@ we say that a Complex Gaussian r.ve. is \textit{circularly symmetric} if
 $$\Cov{\vh{x}} = \Exp{(\vh{x}-\hat{\mu})(\vh{x}-\hat{\mu})^T} = \frac{1}{2} \hat{Q}$$
 
 \begin{block}{pdf of \cscg}
-	The pdf of a \cscg is
+	The pdf of a \cscg{} is
 	\begin{align*}
 	\begin{split}
 	\gamma_{\mu,Q} &= \det(\pi\hat{Q})^{-\frac{1}{2}} e^{-(\hat{x}-\hat{\mu})^T\hat{Q}(\hat{x}-\hat{\mu})}\\
@@ -103,13 +103,13 @@ Suppose the complex r.ve. $\vb{x}\in \C{n}$ is
 zero-mean and $\Cov{\vb{x}}=Q$.\\
 Then the differential entropy of $\vb{x}$ satisfies $h(\vb{x}) \leq \log\det(\pi e Q)$ with equality if and only if $\vb{x}$ is \cscg.
 \end{alertblock}
-In other words, \cscg r.ve. are entropy maximizers for the class of complex random vectors.
+In other words, \cscg{} r.ve. are entropy maximizers for the class of complex random vectors.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
 
 \begin{block}{Lemma 3}
-lf $\vb{x}\in \C{n}$ is a \cscg then so is $\vb{y} = A\vb{x}$ for any $A \in \C{m\times n}$.
+lf $\vb{x}\in \C{n}$ is a \cscg{} then so is $\vb{y} = A\vb{x}$ for any $A \in \C{m\times n}$.
 \end{block}
 \begin{block}{Lemma 4}\label{lemma:4}
 	f $\vb{x}$ and $\vb{y}$ are independent {\cscg s}, then $\vb{z}=\vb{x}+\vb{y}$ is also \cscg.

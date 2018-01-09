@@ -45,7 +45,7 @@ $$\Psi(Q) = \Exp{\log\det(I_r + (\vb{H}W)\Delta\herm{(\vb{H}W)})}$$
 It can be shown that $\vb{H}W$ has the same distribution as $\vb{H}$ (since $W$ is unitary and $\vb{H}$ has i.i.d. entries), and thus $\Psi(Q)=\Psi(\Delta)$. It follows that we can focus on positive semi-definite diagonal $Q$.
 
 \medskip
-Consider the permutation matrix $\Pi$ (which is orthogonal, thus unitary) and define $Q^\Pi \triangleq \Pi Q \Pi^T$. Again, we note that $\Psi(Q^\Pi) = \Psi(Q)$. Also, note that if $Q$ is diagonal, also $Q^\Pi$ is diagonal and they share the same determinant (the main diagonal is only shuffled).
+Consider the permutation matrix $\Pi$ (which is orthogonal, thus unitary) and define $Q^\Pi \triangleq \Pi Q \Pi^T$. Again, we note that $\Psi(Q^\Pi) = \Psi(Q)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
@@ -88,20 +88,20 @@ We can then define
 \vb{\herm{H}H}	& r\geq t
 \end{cases}
 \end{equation*}
-and also $m=\min(r,t)$, $M=\max(r,t)$.
+and also $n=\min(r,t)$, $N=\max(r,t)$.
 
 \medskip
-Clearly, $\vb{W}\in \C{m\times m}$ is a random positive semi-definite matrix, thus it has random, real, non-negative eigenvalues $\vb*{\lambda}_1,\ldots,\vb*{\lambda}_m$.
+Clearly, $\vb{W}\in \C{n\times n}$ is a random positive semi-definite matrix, thus it has random, real, non-negative eigenvalues $\vb*{\lambda}_1,\ldots,\vb*{\lambda}_n$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \framebreak
 
-From the literature, we know that the entries of $\vb{W}$ follow a \textit{Wishart distribution with parameters $m$, $M$} and the joint density of the \textit{ordered} eigenvalues is known to be \cite{james1964}
-$$p_{\lambda,\text{ord}} = 	\frac{1}{K_{m,M}}
-\prod_i e^{-\lambda_i}\lambda_i^{M-m}
+From the literature, we know that the entries of $\vb{W}$ follow a \textit{Wishart distribution with parameters $n$, $N$} and the joint density of the \textit{ordered} eigenvalues is known to be \cite{james1964}
+$$p_{\lambda,\text{ord}} = 	\frac{1}{K_{n,N}}
+\prod_i e^{-\lambda_i}\lambda_i^{N-n}
 \prod_{j>i} (\lambda_i-\lambda_j)^2,
-\quad \lambda_1\geq \ldots \geq \lambda_m \geq 0 $$
-where $K_{m,M}$ is a normalizing factor.
+\quad \lambda_1\geq \ldots \geq \lambda_n \geq 0 $$
+where $K_{n,N}$ is a normalizing factor.
 
 \medskip
 After many complex calculations and transformations we reach...
@@ -114,17 +114,17 @@ After many complex calculations and transformations we reach...
 	\begin{align}\label{eq:capacity_ergodic}
 	\begin{split}
 	C(r,t,P) = \int_0^\infty \log(1+\frac{P}{t}\lambda)
-	\sum_{k=0}^{m-1} \frac{k!}{(k+M-m)!}\\
-	\Big[L_k^{M-m}(\lambda)\Big]^2
-	\lambda^{M-m} e^{-\lambda}
+	\sum_{k=0}^{n-1} \frac{k!}{(k+N-n)!}\\
+	\Big[L_k^{N-n}(\lambda)\Big]^2
+	\lambda^{N-n} e^{-\lambda}
 	\dd{\lambda}
 	\end{split}
 	\end{align}
-	where $m=\min(r,t)$, $M=\max(r,t)$, and
-	$$L_k^{M-m}(x) = \frac{1}{k!}
-	e^x x^{m-M}
+	where $n=\min(r,t)$, $N=\max(r,t)$, and
+	$$L_k^{N-n}(x) = \frac{1}{k!}
+	e^x x^{n-N}
 	\dv[k]{}{x}
-	\qty(e^{-x}x^{M-m+k})$$
+	\qty(e^{-x}x^{N-n+k})$$
 	are the \textit{associated Laguerre polynomials}.
 \end{alertblock}
 
@@ -136,7 +136,7 @@ After many complex calculations and transformations we reach...
 \begin{frame}[allowframebreaks]{Examples}
 
 \begin{example}[$t=1$]
-	In this case $m=1$ and $M=r$. Note that $L_0^{r-1}(\lambda)=1$, thus from Eq.~\eqref{eq:capacity_ergodic} we get
+	In this case $n=1$ and $N=r$. Note that $L_0^{r-1}(\lambda)=1$, thus from Eq.~\eqref{eq:capacity_ergodic} we get
 	$$C(r,1,P) = \frac{1}{(r-1)!}
 	\int_0^\infty \log(1+P\lambda)
 	\lambda^{r-1} e^{-\lambda}
@@ -157,7 +157,7 @@ After many complex calculations and transformations we reach...
 \end{example}
 
 \begin{example}[$r=1$]
-	In this case $m=1$ and $M=t$. Differently from before, though, the capacity is
+	In this case $n=1$ and $N=t$. Differently from before, though, the capacity is
 	$$C(1,t,P) = \frac{1}{(t-1)!}
 	\int_0^\infty \log(1+\frac{P}{t}\lambda)
 	\lambda^{t-1} e^{-\lambda}
@@ -177,14 +177,14 @@ Thus, just increasing the number of transmitting antennas will not help getting 
 \end{example}
 
 \begin{example}[$r=t$]
-	In this case $m=M=r=t$. From Eq.~\eqref{eq:capacity_ergodic}, then, we get
-	$$C(m,m,P) =
-	\int_0^\infty \log(1+\frac{P}{m}\lambda)
-	\sum_{k=0}^{m-1} L_k(\lambda)^2 e^{-\lambda}
+	In this case $n=N=r=t$. From Eq.~\eqref{eq:capacity_ergodic}, then, we get
+	$$C(n,n,P) =
+	\int_0^\infty \log(1+\frac{P}{n}\lambda)
+	\sum_{k=0}^{n-1} L_k(\lambda)^2 e^{-\lambda}
 	\dd{\lambda}$$
 	There actually exists a close form formula for this integral, which is
 	\begin{equation}
-	\lim_{m\rightarrow\infty} \frac{C(m,m,P)}{m} =
+	\lim_{n\rightarrow\infty} \frac{C(n,n,P)}{n} =
 	\log P -1+ \frac{\sqrt{1+4P}-1}{2P} + 2\tanh[-1](\frac{1}{\sqrt{1+4P}})
 	\end{equation}
 	which clearly means that the capacity is a linear function of the number of transmitting/receiving antennas.
